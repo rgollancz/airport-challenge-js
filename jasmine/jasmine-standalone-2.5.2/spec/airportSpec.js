@@ -36,4 +36,13 @@ describe('Airport', function() {
     expect(function() {airport.release_plane(plane)} ).toThrow("It's too stormy for planes to take off")
   });
 
+  it("has a definable default capacity", function() {
+    expect(airport.CAPACITY).toEqual(5)
+  });
+
+  it("shouldn't allow planes to land when at capacity", function() {
+    spyOn(airport.weather, 'isStormy').and.returnValue(false)
+    for (var i = 0; i <= 4; i++) {airport.add_plane(new Plane())}
+    expect(function() {airport.add_plane(plane)}).toThrow("Airport full")
+  });
 });

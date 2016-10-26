@@ -11,5 +11,4 @@ describe('Weather:', function() {
     spyOn(Math, 'random').and.returnValue(0.9)
     expect(weather.isStormy()).toEqual(true)
   });
-
 });
